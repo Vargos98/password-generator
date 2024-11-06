@@ -11,6 +11,8 @@ function App() {
   //useRef hook
   const passwordRef = useRef(null)
 
+  
+  
   const passwordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -28,21 +30,31 @@ function App() {
 
   }, [length, numberAllowed, charAllowed, setPassword])
 
+  
+  
   const copyPasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
     passwordRef.current?.setSelectionRange(0, 999);
     window.navigator.clipboard.writeText(password)
   }, [password])
 
+
+
+
   useEffect(() => {
     passwordGenerator()
   }, [length, numberAllowed, charAllowed, passwordGenerator])
+  
+  
+  
+  
+  
   return (
 
     <div className='w-full bg-zinc-700'>
       <div className="max-w-screen-lg h-screen mx-auto shadow-md rounded-lg px-4 py-3 bg-zinc-900 text-orange-500">
         <h1 className='text-white text-center my-3 text-4xl opacity-80 font-bold uppercase mb-20'>Password generator</h1>
-        <div className="flex shadow rounded-lg overflow-hidden mb-4 items-center justify-center">
+        <div className="flex shadow rounded-lg overflow-hidden mb-4 items-center justify-center flex-wrap">
           <input
             type="text"
             value={password}
@@ -57,8 +69,8 @@ function App() {
           >copy</button>
 
         </div>
-        <div className='flex text-sm gap-x-2 mt-10 items-center justify-center '>
-          <div className='flex items-center gap-x-1'>
+        <div className='flex  gap-12 mt-10 items-center justify-center  flex-wrap text-2xl'>
+          <div className='flex items-center gap-x-2'>
             <input
               type="range"
               min={6}
